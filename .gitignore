@@ -1,0 +1,13 @@
+*.log
+*.tmp
+*.swp
+*.DS_Store
+*.idea/
+.vscode/
+.metadata/
+target/
+dist/
+node_modules/
+build/
+out/
+.env
