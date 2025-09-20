@@ -1,0 +1,39 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 260px;
+  right: 0;
+  z-index: 1036;
+  transition: left 0.3s ease;
+  font-family: 'Segoe UI', -apple-system, 'Roboto', sans-serif;
+}
+
+.navbar-brand {
+  color: #1a2e44;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.btn-outline-primary {
+  color: #1a2e44;
+  border-color: #1a2e44;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1a2e44;
+  color: #fff;
+}
+
+.dropdown-menu {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    left: 0;
+  }
+}

@@ -1,0 +1,128 @@
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.content-header {
+  background-color: rgb(245, 248, 250);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(26, 46, 68, 0.1);
+  font-family: 'Segoe UI', -apple-system, 'Roboto', sans-serif;
+}
+
+.content-header h1 {
+  font-size: 1.5rem;
+  color: #1a2e44;
+  margin: 0;
+}
+
+.breadcrumb {
+  background-color: transparent;
+}
+
+.breadcrumb-item a {
+  color: #1e3a8a;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: #2a5aaa;
+}
+
+.breadcrumb-item.active {
+  color: #1a2e44;
+}
+
+.card {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-footer {
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.table-responsive {
+  margin-bottom: 0;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(26, 46, 68, 0.05);
+}
+
+th {
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #e9ecef;
+}
+a[data-tooltip]:hover,
+button[data-tooltip]:hover {
+  position: relative;
+  cursor: pointer;
+}
+
+a[data-tooltip]:hover::after,
+button[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+a[data-tooltip]:hover::after {
+    top: -2.2rem;
+}
+
+button[data-tooltip]:hover::after {
+    top: -100%;
+}
+
+a[data-tooltip]:hover::after,
+button[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+a[data-tooltip]:hover::before,
+button[data-tooltip]:hover::before {
+  content: "";
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
+  z-index: 1001;
+}
+
+.breadcrumb-link {
+  color: #0d6efd;
+  text-decoration: underline;
+  cursor: pointer;
+}

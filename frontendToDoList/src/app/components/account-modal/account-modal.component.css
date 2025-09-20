@@ -1,0 +1,42 @@
+.modal-content {
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+}
+
+.form-control {
+  border: 1px solid #e0e6ed;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #007bff, #00c4cc);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+  background: #e9ecef;
+  color: #000;
+}
+
+.btn-secondary:hover {
+  background: #dee2e6;
+  transform: scale(1.05);
+}

@@ -31,7 +31,7 @@ public class AuthService {
 	public AuthResponse register(RegisterRequest request) {
 		if (userRepository.findByUsername(request.getUsername()).isPresent()
 				|| userRepository.findByEmail(request.getEmail()).isPresent()) {
-			throw new RuntimeException("Username or email already exists"); 
+			throw new RuntimeException("Username or email already exists");
 		}
 		User user = new User(request.getUsername(), request.getEmail(), passwordEncoder.encode(request.getPassword()));
 		userRepository.save(user);
@@ -42,8 +42,11 @@ public class AuthService {
 	public AuthResponse login(LoginRequest request) {
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+
 		User user = (User) authentication.getPrincipal();
+
 		String token = jwtUtil.generateToken(user);
-		return new AuthResponse(token);
+		return new AuthResponse(token, user.getEmail(), user.getUsername());
 	}
+
 }

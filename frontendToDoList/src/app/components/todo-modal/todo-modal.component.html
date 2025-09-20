@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ isEdit ? 'Edit To-Do List' : 'Add To-Do List' }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('cancel')"></button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="mb-3">
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" class="form-control" id="title" [(ngModel)]="todo.title" name="title" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" [(ngModel)]="todo.description" name="description" rows="3"></textarea>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('cancel')">Cancel</button>
+<button type="button" class="btn btn-primary" (click)="save()">Save</button>
+</div>

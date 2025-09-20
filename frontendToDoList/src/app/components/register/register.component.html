@@ -1,1 +1,58 @@
-<p>register works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-4">Register to TodoApp</h3>
+          <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                [(ngModel)]="registerRequest.username"
+                required
+              >
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="registerRequest.email"
+                required
+                (input)="validateEmail()"
+              >
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                [(ngModel)]="registerRequest.password"
+                required
+              >
+            </div>
+            <div class="mb-3" *ngIf="errorMessage" class="text-danger">
+              <div class="alert alert-danger">{{ errorMessage }}</div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="!registerForm.valid || !isEmailValid"
+            >Register</button>
+          </form>
+          <p class="text-center mt-3">
+            Already have an account? <a routerLink="/login">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

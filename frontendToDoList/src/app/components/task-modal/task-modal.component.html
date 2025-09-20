@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ isEdit ? 'Edit Task' : 'Add Task' }}</h4>
+  <button type="button" class="btn-close" (click)="activeModal.dismiss('cancel')"></button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" [(ngModel)]="task.title" name="title" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" [(ngModel)]="task.description" name="description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="dueDate" class="form-label">Due Date</label>
+      <input type="date" class="form-control" [(ngModel)]="task.dueDate" name="dueDate">
+    </div>
+    <div class="mb-3">
+      <label for="status" class="form-label">Status</label>
+      <select class="form-select" [(ngModel)]="task.status" name="status">
+        <option *ngFor="let status of taskStatus | keyvalue" [value]="status.value">{{ status.value }}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="priority" class="form-label">Priority</label>
+      <select class="form-select" [(ngModel)]="task.priority" name="priority">
+        <option *ngFor="let priority of taskPriority | keyvalue" [value]="priority.value">{{ priority.value }}</option>
+      </select>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('cancel')">Cancel</button>
+  <button type="button" class="btn btn-primary" (click)="save()" [disabled]="!task.title">Save</button>
+</div>

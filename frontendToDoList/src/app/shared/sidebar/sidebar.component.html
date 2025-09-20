@@ -1,0 +1,28 @@
+<aside class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="sidebar-header p-2 text-center d-flex align-items-center justify-content-center" style="height: 56px;">
+    <h6 class="mb-0 text-white fw-bold">{{ companyName }}</h6>
+  </div>
+
+  <div class="user-section p-2 text-white d-flex align-items-center">
+    <i class="bi bi-person-circle me-2 fs-5"></i>
+    <span class="fs-6">Hi, {{ userName }}</span>
+  </div>
+
+  <nav class="nav flex-column p-2">
+    <a *ngFor="let item of navItems"
+       [routerLink]="item.route"
+       routerLinkActive="active"
+       class="nav-link text-white d-flex align-items-center py-1 px-2 rounded-2"
+       style="transition: all 0.3s ease;">
+      <i [class]="item.icon + ' me-2 fs-6'"></i>
+      <span class="fs-6">{{ item.label }}</span>
+    </a>
+  </nav>
+
+  <div class="account-section p-2 text-white text-center" style="position: sticky; bottom: 0;">
+    <a (click)="openAccountModal()" class="nav-link d-flex align-items-center justify-content-center">
+      <i class="bi bi-gear fs-6 me-1"></i>
+      <span class="fs-6">Edit Account</span>
+    </a>
+  </div>
+</aside>

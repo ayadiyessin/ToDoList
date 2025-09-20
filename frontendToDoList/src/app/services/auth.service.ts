@@ -8,23 +8,46 @@ import { AuthResponse, LoginRequest, RegisterRequest } from '../models/auth.mode
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-
   constructor(private http: HttpClient, private router: Router) {}
 
   register(request: RegisterRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/register`, request).pipe(
-      tap(response => this.setToken(response.token))
+      tap(response => this.setAuthData(response))
     );
   }
 
   login(request: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${environment.apiUrl}/auth/login`, request).pipe(
-      tap(response => this.setToken(response.token))
+      tap(response => this.setAuthData(response))
     );
   }
 
-  private setToken(token: string): void {
-    localStorage.setItem('token', token);
+  checkEmail(email: string): Observable<{ exists: boolean }> {
+    return this.http.get<{ exists: boolean }>(`${environment.apiUrl}/auth/check-email?email=${encodeURIComponent(email)}`);
+  }
+
+  public setAuthData(response: Partial<AuthResponse>): void {
+    if (response.token) {
+      localStorage.setItem('token', response.token);
+    }
+    if (response.email) {
+      localStorage.setItem('email', response.email);
+    }
+    if (response.username) {
+      localStorage.setItem('username', response.username);
+    }
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  getEmail(): string | null {
+    return localStorage.getItem('email');
+  }
+
+  getUsername(): string | null {
+    return localStorage.getItem('username');
   }
 
   isLoggedIn(): boolean {
@@ -33,6 +56,8 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('username');
     this.router.navigate(['/login']);
   }
 }

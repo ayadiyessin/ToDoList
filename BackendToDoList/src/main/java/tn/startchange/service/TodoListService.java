@@ -1,6 +1,7 @@
 package tn.startchange.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -27,7 +28,6 @@ public class TodoListService {
 		Long userId = getCurrentUser().getId();
 		return todoListRepository.findByUserId(userId).stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
-
 	public TodoListDTO create(TodoListDTO dto) {
 		User user = getCurrentUser();
 		TodoList todoList = new TodoList(dto.getTitle(), dto.getDescription(), user);
@@ -55,6 +55,14 @@ public class TodoListService {
 		}
 		todoListRepository.delete(existing);
 	}
+	public TodoListDTO getById(Long id) {
+        TodoList todoList = todoListRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("TodoList not found"));
+        if (!todoList.getUser().getId().equals(getCurrentUser().getId())) {
+            throw new RuntimeException("Not authorized");
+        }
+        return mapToDTO(todoList);
+    }
 
 	private TodoListDTO mapToDTO(TodoList entity) {
 		TodoListDTO dto = new TodoListDTO();

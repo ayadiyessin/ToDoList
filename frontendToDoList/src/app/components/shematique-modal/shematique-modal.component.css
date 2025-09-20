@@ -1,0 +1,139 @@
+.modal-body {
+  padding: 25px;
+  background: linear-gradient(135deg, #f0f7ff, #e0eaff);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  min-height: 73vh;
+  max-height: 73vh;
+  overflow-y: auto;
+}
+
+.modal-dialog {
+  max-width: 100% !important;
+  width: 95vw !important;
+  margin: 1rem auto;
+}
+
+
+.kanban-board {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  min-height: 65vh;
+  padding: 20px 0;
+}
+
+.kanban-column {
+  flex: 1;
+  background: linear-gradient(180deg, #ffffff, #f5faff);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 300px;
+  max-width: 350px;
+}
+
+.kanban-column:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 100, 0.1);
+}
+
+.kanban-card {
+  background: linear-gradient(135deg, #ffffff, #eef2ff);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.kanban-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-card p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1a2e44;
+  font-weight: 500;
+}
+
+.kanban-card small {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.kanban-card span {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bg-low {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.bg-medium {
+  background-color: #fd7e14;
+  color: #fff;
+}
+
+.bg-high {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #357ab7, #3dc9a7);
+}
+
+.btn-primary.active {
+  background: linear-gradient(90deg, #2a6eb4, #2eb699);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background: #6c757d;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-dialog {
+    max-width: 98vw;
+    width: auto;
+  }
+  .kanban-board {
+    flex-direction: column;
+  }
+  .kanban-column {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}

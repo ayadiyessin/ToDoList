@@ -1,0 +1,36 @@
+
+<div class="modal-header">
+  <h4 class="modal-title">Shematique View kanban</h4>
+  <button type="button" class="btn-close" (click)="activeModal.dismiss('cancel')"></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="viewMode === 'kanban'" class="kanban-board">
+    <div class="kanban-column" (drop)="onDrop($event, taskStatus.PENDING)" (dragover)="onDragOver($event)">
+      <h5>PENDING</h5>
+      <div *ngFor="let task of tasks | filterByStatus: 'PENDING'" class="kanban-card" draggable="true" (dragstart)="onDragStart($event, task.id!)">
+        <p>{{ task.title }}</p>
+        <small>{{ task.dueDate }}</small>
+        <span [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>
+      </div>
+    </div>
+    <div class="kanban-column" (drop)="onDrop($event, taskStatus.IN_PROGRESS)" (dragover)="onDragOver($event)">
+      <h5>IN_PROGRESS</h5>
+      <div *ngFor="let task of tasks | filterByStatus: 'IN_PROGRESS'" class="kanban-card" draggable="true" (dragstart)="onDragStart($event, task.id!)">
+        <p>{{ task.title }}</p>
+        <small>{{ task.dueDate }}</small>
+        <span [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>
+      </div>
+    </div>
+    <div class="kanban-column" (drop)="onDrop($event, taskStatus.COMPLETED)" (dragover)="onDragOver($event)">
+      <h5>COMPLETED</h5>
+      <div *ngFor="let task of tasks | filterByStatus: 'COMPLETED'" class="kanban-card" draggable="true" (dragstart)="onDragStart($event, task.id!)">
+        <p>{{ task.title }}</p>
+        <small>{{ task.dueDate }}</small>
+        <span [class]="getPriorityClass(task.priority)">{{ task.priority }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('cancel')">Close</button>
+</div>
